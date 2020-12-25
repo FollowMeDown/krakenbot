@@ -70,13 +70,11 @@ func main() {
 }
 
 func getCoinPrice(coinType string) string {
-  bookEUR, err := client.GetBook(coinType+"-EUR", 1)
   bookUSD, err := client.GetBook(coinType+"-USD", 1)
   if err != nil {
     return "Coin not found"
   }
 
-  priceEUR := bookEUR.Asks[0].Price
   priceUSD := bookUSD.Asks[0].Price
 
   stamp := time.Now()
@@ -97,7 +95,7 @@ func getCoinPrice(coinType string) string {
     "`\n*Highest:* `" + "$" + fmt.Sprintf("%v", product24h[0].High) +
     "`\n\n_" + stamp.Format("15:04:05 02-01") + "_"
 
-  return "*USD:*\t\t\t\t\t\t\t`$" + priceUSD + "`\n*EUR:*\t\t\t\t\t\t\t`€" + priceEUR + "`" + table
+  return "*Price:*\t\t\t\t\t\t\t`$" + priceUSD + "`" + table
 }
 
 func readConf(filename string) (*conf, error) {
