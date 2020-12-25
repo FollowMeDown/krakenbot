@@ -95,7 +95,7 @@ func getCoinPrice(coinType string) string {
     "`\n*Highest:* `" + "$" + fmt.Sprintf("%v", product24h[0].High) +
     "`\n\n_" + stamp.Format("15:04:05 02-01") + "_"
 
-  return "*Price:*\t\t\t\t\t\t\t`$" + priceUSD + "`" + table
+  return "*Price:*\t\t\t\t\t`$" + priceUSD + "`" + table
 }
 
 func readConf(filename string) (*conf, error) {
